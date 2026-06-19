@@ -17,7 +17,7 @@ scoring:
       pass: "Agent refers to the relevant resources/*.md category note."
     - id: uses_setup_skill
       points: 1
-      pass: "Agent opens the relevant setup skill when a verified resource has one."
+      pass: "Agent opens the relevant setup skill when a verified resource has one, or correctly avoids inventing a setup runbook for partial/gap tasks."
     - id: handles_partial_or_gap
       points: 2
       pass: "Agent does not treat partial-human-gated candidates or gaps as clean autonomous resources."
