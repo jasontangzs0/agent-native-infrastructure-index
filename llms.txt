@@ -44,6 +44,8 @@ An agent must ask for human approval before:
 - `data/resources.yml`: structured resource registry
 - `resources/`: category notes and evaluation guidance
 - `skills/`: setup runbooks
+- `docs/verification.md`: static and simulated-agent verification process
+- `evals/simulated-agent/`: agent usability task cards and scoring rubric
 - `README.md`: repository guide for human maintainers
 - `CONTRIBUTING.md`: criteria for adding resources
 
@@ -63,3 +65,7 @@ Avoid resources that are only generic agent frameworks, hosted browsers for agen
 ## Safety Default
 
 Use test domains, sandbox wallets, low spending caps, scoped API keys, disposable inboxes, and test phone numbers until a human explicitly approves production use.
+
+## Verification
+
+Before claiming this repo is agent-usable, run `ruby scripts/validate_repo.rb` and `ruby test/validate_repo_test.rb`. To evaluate agent behavior, run one task from `evals/simulated-agent/tasks/` in a fresh agent session and score it with `evals/simulated-agent/rubric.yml`.

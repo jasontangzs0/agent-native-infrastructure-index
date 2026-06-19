@@ -36,6 +36,17 @@ A resource should meet at least one criterion:
 - Marketing-only pages with no docs or reproducible setup path.
 - Pricing claims that were not checked during the same update.
 
+## Verification
+
+Before opening a pull request, run:
+
+```sh
+ruby scripts/validate_repo.rb
+ruby test/validate_repo_test.rb
+```
+
+If a resource changes how agents should choose or classify infrastructure, add or update a task in `evals/simulated-agent/tasks/` and update `evals/simulated-agent/rubric.yml`.
+
 ## Setup Skill Template
 
 Use this structure for `skills/setup-name.md`:

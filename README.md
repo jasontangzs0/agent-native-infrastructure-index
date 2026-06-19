@@ -69,6 +69,19 @@ These are the useful primitives this repo is still looking for:
 - Portable agent identity and reputation: Skyfire KYA and early protocol work cover parts of the problem, but no broadly adopted, portable reputation-bearing agent identity service was verified.
 - General signed human approval relay: approval tools exist, but they intentionally require human intervention and should stay separate from autonomous resources.
 
+## Verification
+
+This repo is meant to be agent-usable, so it includes both static checks and simulated-agent evals.
+
+Run the local checks:
+
+```sh
+ruby scripts/validate_repo.rb
+ruby test/validate_repo_test.rb
+```
+
+Use [docs/verification.md](docs/verification.md) for the full process. The simulated-agent tasks live in [evals/simulated-agent](evals/simulated-agent) and test whether a fresh agent can choose the right resource, classify partials and gaps, open setup runbooks, and stop at human approval gates.
+
 ## Publish
 
 Push the repository to GitHub and let GitHub render the README. Agents should use `llms.txt` and `data/resources.yml` directly instead of scraping a rendered page.
