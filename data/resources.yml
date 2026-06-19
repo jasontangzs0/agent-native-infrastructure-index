@@ -1,0 +1,318 @@
+last_researched: "2026-06-19"
+positioning: "Agent-native infrastructure means internet-facing resources an AI agent can own, consume, or operate directly. This index assumes the agent already has a computer and excludes hosted browser/computer-use, managed memory, and generic API connector services from the core list."
+categories:
+  - id: email
+    name: Email and inbox
+    resources:
+      - name: AgentMail
+        url: https://www.agentmail.to/
+        docs: https://docs.agentmail.to/
+        status: verified-primary-page
+        agent_asset: dedicated inbox
+        why: "API-first email inboxes for AI agents, including threads, attachments, realtime events, SDKs, MCP, semantic search, and data extraction."
+        setup_skill: skills/setup-agentmail.md
+        human_approval_needed:
+          - custom domain setup
+          - production outbound email
+          - handling user or customer data
+      - name: Robotomail
+        url: https://robotomail.com/
+        docs: https://robotomail.com/docs
+        status: verified-primary-page
+        agent_asset: dedicated mailbox
+        why: "Real email addresses for agents, send and receive APIs, webhook/SSE/polling inbound, attachments, threading, and an agent self-onboarding skill page."
+        setup_skill: skills/setup-robotomail.md
+        human_approval_needed:
+          - paid plan upgrade
+          - custom domain setup
+          - production outbound email
+      - name: DropMail
+        url: https://dropmail.me/api/
+        docs: https://dropmail.me/api/
+        status: verified-primary-docs
+        agent_asset: disposable inbound email address
+        why: "Programmatic temporary email addresses with GraphQL, realtime mail delivery, restore keys, personal-domain support, and an MCP server for AI assistants."
+        setup_skill: skills/setup-dropmail.md
+        verification:
+          - "API docs: https://dropmail.me/api/"
+          - "MCP package docs: https://dropmail.me/api/#mcp-ai-agents"
+        caveat: "Best for verification-code, onboarding, and testing workflows. Treat it as temporary/disposable unless the agent uses restore keys and an approved personal domain."
+        human_approval_needed:
+          - using a disposable address for third-party account creation
+          - personal domain DNS setup
+          - storing restore keys
+          - handling verification codes
+  - id: phone
+    name: Phone, SMS, and voice
+    resources:
+      - name: Retell AI
+        url: https://www.retellai.com/
+        docs: https://docs.retellai.com/
+        status: verified-primary-docs
+        agent_asset: phone number, inbound/outbound call routing, SMS-capable number
+        why: "AI phone-agent platform with llms.txt docs, API reference, MCP server, SDKs, webhooks, and an API endpoint to buy a new phone number and bind agents."
+        setup_skill: skills/setup-retell.md
+        verification:
+          - "Create Phone Number API: https://docs.retellai.com/api-references/create-phone-number"
+          - "Docs llms.txt: https://docs.retellai.com/llms.txt"
+        human_approval_needed:
+          - phone number purchase
+          - outbound calls
+          - outbound SMS
+          - recording or transcribing calls
+          - A2P or business profile approval
+      - name: Vapi
+        url: https://vapi.ai/
+        docs: https://docs.vapi.ai/
+        status: verified-primary-docs
+        agent_asset: phone number resource, inbound/outbound calls, inbound SMS
+        why: "Voice-agent platform with llms.txt docs, API reference, MCP, SDKs, CLI, and a phone-number API for creating or registering provider-backed phone-number resources."
+        setup_skill: skills/setup-vapi.md
+        verification:
+          - "Create Phone Number API: https://docs.vapi.ai/api-reference/phone-numbers/create"
+          - "Docs llms.txt: https://docs.vapi.ai/llms.txt"
+        caveat: "Vapi phone-number creation depends on provider/account type; free Vapi number creation is documented through the dashboard, while the API supports vapi and provider-backed phone-number resources."
+        human_approval_needed:
+          - API key creation
+          - phone number creation or provider import
+          - outbound calls
+          - inbound SMS setup
+          - using Twilio, Telnyx, Vonage, or other provider credentials
+  - id: webhooks
+    name: Public endpoint and webhook inbox
+    resources:
+      - name: Hookdeck
+        url: https://hookdeck.com/
+        docs: https://hookdeck.com/docs
+        status: verified-primary-docs
+        agent_asset: public webhook source URL, event inbox, routing, replay, and inspection
+        why: "Event gateway for receiving HTTP requests and third-party webhooks, with API-created sources, destinations, and connections plus agent-readable docs, MCP inspection, and product skills for configuration workflows."
+        setup_skill: skills/setup-hookdeck.md
+        verification:
+          - "Docs: https://hookdeck.com/docs"
+          - "Sources API/docs: https://hookdeck.com/docs/sources"
+          - "MCP and agent skills: https://hookdeck.com/docs/mcp"
+          - "LLM docs index: https://hookdeck.com/docs/llms.txt"
+        caveat: "Hookdeck's MCP is mainly for authenticated read and inspection. Resource creation and changes should use the API, CLI, or Hookdeck agent skills."
+        human_approval_needed:
+          - Hookdeck account or API key creation
+          - exposing production webhook endpoints
+          - routing third-party production webhooks
+          - storing sensitive event payloads
+          - custom domain setup
+  - id: payments
+    name: Payments and commerce
+    resources:
+      - name: Skyfire
+        url: https://skyfire.xyz/
+        docs: https://docs.skyfire.xyz/
+        status: verified-primary-page
+        agent_asset: KYA token, agent wallet, payment mandate
+        why: "Agent trust stack for verified identity, user mandates, wallet credentials, and checkout."
+        setup_skill: null
+        human_approval_needed:
+          - verified identity
+          - wallet funding
+          - payment mandates
+          - seller or buyer onboarding
+      - name: x402
+        url: https://www.x402.org/
+        docs: https://docs.x402.org/
+        status: verified-primary-page
+        agent_asset: HTTP-native payment protocol
+        why: "Open standard using HTTP 402 for internet-native payments, including agentic payments and paid API access."
+        setup_skill: skills/setup-x402.md
+        human_approval_needed:
+          - wallet creation or funding
+          - spend caps
+          - production settlement
+      - name: Coinbase x402
+        url: https://docs.cdp.coinbase.com/x402/
+        docs: https://docs.cdp.coinbase.com/x402/
+        status: verified-primary-docs
+        agent_asset: facilitator and wallet tooling
+        why: "Developer docs for x402, including buyers, sellers, MCP servers, SDKs, and facilitator support."
+        setup_skill: skills/setup-x402.md
+        human_approval_needed:
+          - Coinbase developer account
+          - wallet or facilitator setup
+          - spend caps
+      - name: Coinbase Agentic Wallet
+        url: https://docs.cdp.coinbase.com/agentic-wallet/welcome
+        docs: https://docs.cdp.coinbase.com/agentic-wallet/welcome
+        status: verified-primary-docs
+        agent_asset: agent wallet and x402 payment capability
+        why: "Coinbase wallet infrastructure for AI agents to hold, spend, trade, and pay for x402 services through CLI skills or an MCP server with spending guardrails."
+        setup_skill: skills/setup-coinbase-agentic-wallet.md
+        verification:
+          - "Agentic Wallet docs: https://docs.cdp.coinbase.com/agentic-wallet/welcome"
+          - "Agentic Wallet MCP docs: https://docs.cdp.coinbase.com/agentic-wallet/mcp/welcome"
+          - "CDP llms.txt: https://docs.cdp.coinbase.com/llms.txt"
+        human_approval_needed:
+          - Coinbase account authentication
+          - embedded wallet creation
+          - onramp or wallet funding
+          - spending limits
+          - real-money payment
+      - name: Nevermined
+        url: https://nevermined.ai/
+        docs: https://www.nevermined.ai/
+        status: verified-primary-page
+        agent_asset: payment infrastructure and virtual cards
+        why: "Payments infrastructure for AI agents, APIs, datasets, and digital services, including virtual cards, metering, and x402 facilitator support."
+        setup_skill: null
+        human_approval_needed:
+          - card or wallet activation
+          - spend rules
+          - production merchant/payment setup
+  - id: partial-human-gated
+    name: Partial and human-gated candidates
+    resources:
+      - name: Vercel
+        url: https://vercel.com/
+        docs: https://vercel.com/docs/rest-api
+        status: partial-human-gated
+        agent_asset: web presence, deployment, project, and domain APIs
+        why: "Programmatic project, deployment, domain, DNS, environment, and webhook APIs can support an agent-owned web presence after a human-owned account and billing context exist."
+        partial_reason: "Not agent-first ownership from zero; account tokens, billing, custom domains, and domain ownership remain human or organization controlled."
+        human_approval_needed:
+          - account access token
+          - billing setup
+          - production deployment
+          - custom domain purchase or assignment
+      - name: Cloudflare Domains, DNS, and R2
+        url: https://www.cloudflare.com/
+        docs: https://developers.cloudflare.com/api/
+        status: partial-human-gated
+        agent_asset: DNS records, registrar-managed domains, and object storage
+        why: "API-accessible internet primitives for DNS, domain management, and externally hosted files."
+        partial_reason: "Useful infrastructure, but not agent-first; registrar, billing, account ownership, and compliance setup are human or organization responsibilities."
+        human_approval_needed:
+          - account API token
+          - domain purchase or transfer
+          - DNS changes
+          - storage bucket creation for sensitive data
+      - name: Vercel Blob
+        url: https://vercel.com/docs/vercel-blob
+        docs: https://vercel.com/docs/vercel-blob/using-blob-sdk
+        status: partial-human-gated
+        agent_asset: externally hosted file store and public/private file URLs
+        why: "SDK and API-accessible blob storage with public/private access modes and generated URLs."
+        partial_reason: "Solves external file storage, but it is generic cloud storage rather than an agent-first data room."
+        human_approval_needed:
+          - storage token
+          - billing setup
+          - storing personal or regulated files
+          - public file publishing
+      - name: Arcade
+        url: https://arcade.dev/
+        docs: https://docs.arcade.dev/
+        status: partial-human-gated
+        agent_asset: credential delegation and tool access layer
+        why: "Agent-oriented tool calling, auth providers, MCP support, and scoped access to third-party integrations."
+        partial_reason: "Delegated access usually depends on a user authorizing third-party accounts before the agent can act."
+        human_approval_needed:
+          - Arcade API key
+          - user OAuth or account authorization
+          - scoped permission approval
+          - production tool calls
+      - name: Composio
+        url: https://composio.dev/
+        docs: https://docs.composio.dev/docs
+        status: partial-human-gated
+        agent_asset: managed auth and connected tools
+        why: "Agent-accessible tool/auth platform with broad integration coverage and agent onboarding paths."
+        partial_reason: "Useful for delegated tool access, but third-party account connections and approval rules are human-gated."
+        human_approval_needed:
+          - Composio account/API key
+          - third-party account connection
+          - delegated credential storage
+          - approval rules for external actions
+      - name: Nango
+        url: https://nango.dev/
+        docs: https://nango.dev/docs/getting-started/intro-to-nango
+        status: partial-human-gated
+        agent_asset: integration auth, credential storage, and agent-callable functions
+        why: "Handles OAuth, API keys, token refresh, credential storage, webhooks, hosted functions, and MCP/tool schemas for agents."
+        partial_reason: "The core auth flow is built around users connecting external APIs."
+        human_approval_needed:
+          - Nango account/API key
+          - user API connection
+          - credential storage
+          - action function approval
+      - name: Payman
+        url: https://www.paymanai.com/
+        docs: https://docs.paymanai.com/
+        status: partial-human-gated
+        agent_asset: agent wallet, payments, requests, and approval controls
+        why: "Agent-first payment platform for giving agents wallets, requesting and making payments, tracking transactions, and enforcing controls."
+        partial_reason: "Money movement is intentionally consent and policy gated; human approval is central to the operating model."
+        human_approval_needed:
+          - account setup
+          - wallet funding
+          - payment approval policy
+          - real-money payment
+      - name: Stripe Issuing
+        url: https://stripe.com/issuing
+        docs: https://docs.stripe.com/issuing
+        status: partial-human-gated
+        agent_asset: virtual and physical commercial cards
+        why: "API-driven card issuing, spending controls, and real-time authorization for businesses."
+        partial_reason: "Requires Stripe account, business context, funding, compliance, and card-program controls; not agent-first."
+        human_approval_needed:
+          - Stripe account
+          - business/compliance setup
+          - funding issuing balance
+          - virtual card issuance
+      - name: Lithic
+        url: https://lithic.com/
+        docs: https://docs.lithic.com/docs/cards
+        status: partial-human-gated
+        agent_asset: virtual cards, physical cards, spend controls, and authorization rules
+        why: "API-first card issuing and transaction controls with agent-readable docs."
+        partial_reason: "Card programs require account holder, KYC/KYB, program configuration, funding, and compliance approval."
+        human_approval_needed:
+          - Lithic program/account setup
+          - KYC or KYB
+          - card creation
+          - production spend rules
+      - name: LegalZoom Virtual Mail
+        url: https://www.legalzoom.com/business/business-operations/lz-virtual-mail-overview.html
+        docs: https://www.legalzoom.com/business/business-operations/lz-virtual-mail-overview.html
+        status: partial-human-gated
+        agent_asset: physical mailing address and digitized mail inbox
+        why: "Virtual business address, mail digitization, cloud storage, AI summaries, and API integrations."
+        partial_reason: "Physical mail services require human/business identity, plan purchase, recipient authorization, and compliance."
+        human_approval_needed:
+          - plan purchase
+          - business or personal identity setup
+          - recipient authorization
+          - mail handling actions
+      - name: HumanLayer
+        url: https://www.humanlayer.dev/
+        docs: https://www.humanlayer.dev/
+        status: partial-human-gated
+        agent_asset: human review, collaboration, and approval workflow
+        why: "Human-agent collaboration layer for tasks, sessions, artifacts, comments, and approval-style checkpoints."
+        partial_reason: "This is a human-in-the-loop relay by design, not autonomous infrastructure."
+        human_approval_needed:
+          - workspace setup
+          - human reviewer participation
+          - task/session launch controls
+          - production workflow adoption
+gaps:
+  - primitive: Agent-safe account creation broker
+    status: missing
+    note: "No general service was verified that lets an agent safely create accounts across arbitrary third-party websites without human intervention. Skyfire covers account creation inside participating seller services."
+    closest:
+      - https://docs.skyfire.xyz/docs/developer-documentation
+  - primitive: Portable agent identity and reputation
+    status: emerging
+    note: "Skyfire KYA and early agent identity protocols cover parts of the problem, but no broadly adopted, portable, reputation-bearing agent identity service was verified."
+    closest:
+      - https://docs.skyfire.xyz/
+  - primitive: General signed human approval relay
+    status: partial-by-design
+    note: "Approval relays are useful infrastructure, but they intentionally require human intervention. Keep them separate from autonomous resources."
+    closest:
+      - https://www.humanlayer.dev/

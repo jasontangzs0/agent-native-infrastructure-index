@@ -1,0 +1,65 @@
+# Agent-Native Infrastructure Index
+
+This repository is built for AI agents first. Human readers are expected to audit, maintain, and approve sensitive actions.
+
+## Purpose
+
+Use this index to choose infrastructure an agent can own, consume, or operate directly:
+
+- email inboxes
+- phone numbers, SMS, and voice calls
+- public webhook endpoints and event inboxes
+- payments and commerce
+- identity-linked payment credentials and mandates
+- other internet-facing assets the agent cannot create locally
+
+This index assumes the agent already has full access to a computer. Do not treat hosted browsers, remote desktops, or computer-use services as core infrastructure unless the task explicitly requires a separate hosted machine. This is not primarily a list of agent frameworks.
+
+## Start Here
+
+1. Read `data/resources.yml` for the canonical machine-readable resource list.
+2. Choose the category matching the task.
+3. Open the matching file in `resources/` for category-level notes.
+4. Open the matching file in `skills/` for setup steps, secrets, smoke tests, production checks, and failure modes.
+5. Stop and ask the human before any action listed under "Human Approval Required".
+
+## Approval Gates
+
+An agent must ask for human approval before:
+
+- spending money or funding a wallet
+- sending outbound email or external messages
+- creating phone numbers, making outbound calls, or sending outbound SMS
+- exposing production webhook endpoints or routing production events
+- creating production accounts
+- storing credentials
+- storing personal, customer, regulated, or sensitive data
+- using third-party credentials or delegated accounts
+- creating accounts on third-party websites
+- making purchases or accepting payments
+- changing permissions or publishing externally
+
+## Canonical Files
+
+- `data/resources.yml`: structured resource registry
+- `resources/`: category notes and evaluation guidance
+- `skills/`: setup runbooks
+- `README.md`: repository guide for human maintainers
+- `CONTRIBUTING.md`: criteria for adding resources
+
+Rows under `partial-human-gated` are useful candidates, not clean core resources. Entries under `gaps` are missing or emerging primitives.
+
+## Selection Heuristic
+
+Prefer resources that:
+
+- provision an internet-facing agent-owned asset, such as an inbox, wallet, credential profile, verified identity, phone number, public address, domain, or externally hosted file store
+- give the agent a real-world capability it cannot create with local files, local databases, or ordinary software on its own machine
+- expose APIs, SDKs, or documented agent-readable setup paths for provisioning and operating that asset
+- provide public primary docs that make setup reproducible
+
+Avoid resources that are only generic agent frameworks, hosted browsers for agents that already have a computer, managed memory stores, generic API connector platforms, marketing pages without docs, or ordinary SaaS APIs with no agent-specific infrastructure role.
+
+## Safety Default
+
+Use test domains, sandbox wallets, low spending caps, scoped API keys, disposable inboxes, and test phone numbers until a human explicitly approves production use.
