@@ -69,6 +69,8 @@ These are the useful primitives this repo is still looking for:
 - Portable agent identity and reputation: Skyfire KYA and early protocol work cover parts of the problem, but no broadly adopted, portable reputation-bearing agent identity service was verified.
 - General signed human approval relay: approval tools exist, but they intentionally require human intervention and should stay separate from autonomous resources.
 
+See [resources/gaps.md](resources/gaps.md) for gap evaluation notes and graduation criteria.
+
 ## Verification
 
 This repo is meant to be agent-usable, so it includes both static checks and simulated-agent evals.

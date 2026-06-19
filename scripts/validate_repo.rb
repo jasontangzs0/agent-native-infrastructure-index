@@ -164,6 +164,10 @@ module RepoValidator
   end
 
   def validate_gaps(root, gaps, errors)
+    unless root.join("resources/gaps.md").file?
+      errors << "missing gaps note: resources/gaps.md"
+    end
+
     unless gaps.is_a?(Array) && !gaps.empty?
       errors << "data/resources.yml missing non-empty gaps"
       return
@@ -182,6 +186,10 @@ module RepoValidator
   end
 
   def validate_eval_rubric(root, errors)
+    unless root.join("evals/simulated-agent/results/TEMPLATE.md").file?
+      errors << "missing eval result template: evals/simulated-agent/results/TEMPLATE.md"
+    end
+
     rubric_path = root.join("evals/simulated-agent/rubric.yml")
     unless rubric_path.file?
       errors << "missing eval rubric: evals/simulated-agent/rubric.yml"

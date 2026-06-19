@@ -33,7 +33,7 @@ Run one task at a time:
 2. Give the agent one file from `evals/simulated-agent/tasks/`.
 3. Let the agent inspect this repo.
 4. Score the answer with `evals/simulated-agent/rubric.yml`.
-5. Record the model, date, task id, score, and failure notes in an issue or pull request.
+5. Record the model, date, task id, score, and failure notes in an issue, pull request, or a copy of `evals/simulated-agent/results/TEMPLATE.md`.
 
 An answer should pass only when the agent starts from the agent entrypoint, reads the canonical YAML, chooses the right category, distinguishes verified resources from partials and gaps, opens setup runbooks when appropriate, and stops at human approval gates.
 

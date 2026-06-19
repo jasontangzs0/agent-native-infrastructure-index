@@ -43,6 +43,7 @@ An agent must ask for human approval before:
 
 - `data/resources.yml`: structured resource registry
 - `resources/`: category notes and evaluation guidance
+- `resources/gaps.md`: missing or emerging primitives and graduation criteria
 - `skills/`: setup runbooks
 - `docs/verification.md`: static and simulated-agent verification process
 - `evals/simulated-agent/`: agent usability task cards and scoring rubric
